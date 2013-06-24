@@ -1,0 +1,62 @@
+/********Quick Sort Implementation*************/
+
+#include <iostream>
+using namespace std;
+
+template <class X>
+void swap(X *a, X *b)
+{
+    X temp;
+    temp=*a;
+    *a=*b;
+    *b=temp;
+} 
+
+template <class X>
+int partition(X A[], int first_index, int last_index, int pivot)
+{
+    X pivot_value = A[pivot];
+    int store_index = first_index;
+    swap(&A[pivot],&A[last_index]);
+    
+    for(int i=first_index;i<last_index;i++)
+      {
+         if(A[i]<pivot_value)
+           {
+              swap(&A[i],&A[store_index]);
+              store_index++;
+           }
+      }
+    swap(&A[store_index],&A[last_index]);
+    
+    return store_index;
+}                    
+
+template <class X>
+void quicksort(X A[], int first_index, int last_index)
+{
+     if(first_index < last_index)
+       {
+           int pivot=(first_index + last_index) / 2; 
+           int pivot_index = partition(A,first_index,last_index,pivot);
+           
+           quicksort(A,first_index,pivot_index-1);
+           quicksort(A,pivot_index+1,last_index);
+       }
+}
+
+int main()
+{
+    int A[]={9,8,6,8,4,5,7,2,3,12,44,22,15,4,7,9};
+                   
+    quicksort(A,0,15);
+    
+    for(int i=0;i<16;i++)
+      {
+          printf("%d ",A[i]);
+      }
+    printf("\n");
+    
+ system("pause");   
+}                        
+              
