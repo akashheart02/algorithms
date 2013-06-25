@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-#define MAX 10000000
+#define MAX 10000000 //increase or decrease size as you wish
 int A[MAX];
 int prime[MAX];
 int t;
