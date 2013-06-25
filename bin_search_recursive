@@ -1,0 +1,40 @@
+/***************binary search Algorithm********************/
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int bin_search(int *A,int low, int high, int no)
+{
+    if(low<=high)
+      {
+         int mid=(low+high)/2;
+         
+         if(A[mid]==no)
+           return mid;       
+          
+         else if(A[mid] < no) 
+           return bin_search(A,mid+1,high,no);
+         
+         else
+           return bin_search(A,low,mid-1,no);
+      }
+return -1;
+}
+
+int main()
+{
+    int A[]={2,56,7,8,23,78,9,2,5,47,734,63,54};
+    
+    sort(A,A+13);
+    
+    for(int i=0;i<13;i++)
+      printf("%d ",A[i]);
+      
+    printf("\n");  
+    int pos=bin_search(A,0,12,78);
+    
+    printf("%d\n",pos);
+system("pause");
+return 0;    
+}
